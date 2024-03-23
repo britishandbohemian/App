@@ -4,7 +4,15 @@
 
   @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+.btnenter{
+  margin: auto;
+}
 
+
+
+.material-icons{
+  color: white;
+}
 
   .navTop{
     display: block;
@@ -37,6 +45,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 36px;
 line-height: 45px;
+color: white;
     }
 
     nav {
