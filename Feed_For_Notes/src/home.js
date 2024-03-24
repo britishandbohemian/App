@@ -18,13 +18,13 @@ const Home = ({ viewsData }) => {
         </header>
       </section>
 
-      <section style={{ padding: '1rem' }}>
-        <div style={{ padding: '2rem', backgroundColor: 'rgb(0, 0, 0)', marginBottom: '0' }}>
+      <section style={{ padding: '1rem',margin:' 3rem auto' }}>
+        <div style={{ margin:'3rem auto',padding: '2rem', backgroundColor: 'rgb(0, 0, 0)', marginBottom: '0' }}>
           <h1 style={{ fontSize: '5vh', fontWeight: 'bolder', color: 'white' }}>Welcome, {username}</h1>
         </div>
         <hr style={{ padding: '0', margin: '0', height: '2.5rem', width: '100%' }} className="gradient" />
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'left', gap: '20px' ,flexDirection: 'column',margin:'3rem auto'}}>
           {viewsData.map((view, index) => (
             <Link
               to={`/view/${view.id}`}
