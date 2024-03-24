@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Feed_App/static/css/main.31d6cfe0.css",
+    "main.js": "/Feed_App/static/js/main.efe95745.js",
+    "static/js/453.ad6eb26e.chunk.js": "/Feed_App/static/js/453.ad6eb26e.chunk.js",
+    "index.html": "/Feed_App/index.html",
+    "main.efe95745.js.map": "/Feed_App/static/js/main.efe95745.js.map",
+    "453.ad6eb26e.chunk.js.map": "/Feed_App/static/js/453.ad6eb26e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.efe95745.js"
+  ]
+}

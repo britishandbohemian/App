@@ -1,0 +1,78 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Milonga&display=swap');
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.btnenter{
+  margin: auto;
+}
+
+
+
+.material-icons{
+  color: white;
+}
+
+  .navTop{
+    display: block;
+    position: relative;
+    margin-bottom: 9rem;
+  }
+
+button{
+  border: none ;background-color: white;
+}
+
+
+  body{
+    font-family: 'Montserrat';
+    height: 100vh;
+    background-color: #F4F4F4;
+  }
+
+    
+    .navHome {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+    }
+
+    .logo {
+      margin-right: 1rem;
+      font-family: 'Milonga';
+font-style: normal;
+font-weight: 400;
+font-size: 36px;
+line-height: 45px;
+color: black;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    
+
+    header {
+
+      background: #FFFFFF;
+border: 1px solid #C9C9C9;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    
+
+
+.gradient{
+
+  background-color: #FFE53B;
+  background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+  
+
+}
