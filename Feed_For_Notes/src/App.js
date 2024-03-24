@@ -1,9 +1,10 @@
 import React, { createContext, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './home'; // Adjust the path if necessary
 import SignIn from './signin'; // Adjust the path if necessary
 import ViewComponent from './viewComponent'; // Adjust the path if necessary
 import EditComponent from './EditComponent'; // Adjust the path if necessary
+import AddComponent from './AddComponent'; // Adjust the path if necessary
 
 export const ViewsDataContext = createContext(null);
 
@@ -17,23 +18,35 @@ const App = () => {
   const [viewsData, setViewsData] = useState(initialData);
 
   const updateViewsData = (updatedItem) => {
-    const updatedViewsData = viewsData.map(item => 
-      item.id === updatedItem.id ? updatedItem : item
-    );
-    setViewsData(updatedViewsData);
+    if (viewsData.some(item => item.id === updatedItem.id)) {
+      // Update existing note
+      const updatedViewsData = viewsData.map(item => 
+        item.id === updatedItem.id ? updatedItem : item
+      );
+      setViewsData(updatedViewsData);
+    } else {
+      // Add new note
+      setViewsData([...viewsData, updatedItem]);
+    }
   };
+  
 
   return (
     <Router>
-      <ViewsDataContext.Provider value={{ viewsData, updateViewsData }}>
-        <Routes>
-          <Route path="/" element={<SignIn />} />
-          <Route path="/home" element={<Home viewsData={viewsData} />} />
-          <Route path="/view/:id" element={<ViewComponent />} />
-          <Route path="/edit/:id" element={<EditComponent />} />
-        </Routes>
-      </ViewsDataContext.Provider>
-    </Router>
+    <ViewsDataContext.Provider value={{ viewsData, updateViewsData }}>
+      <Routes>
+        {/* Set SignIn as the index route */}
+        <Route index element={<SignIn />} />
+        <Route path="home" element={<Home viewsData={viewsData} />} />
+        <Route path="view/:id" element={<ViewComponent />} />
+        <Route path="edit/:id" element={<EditComponent />} />
+        <Route path="create" element={<AddComponent />} />
+
+        {/* Optionally, redirect from /signin to / */}
+        <Route path="signin" element={<Navigate replace to="/" />} />
+      </Routes>
+    </ViewsDataContext.Provider>
+  </Router>
   );
 };
 

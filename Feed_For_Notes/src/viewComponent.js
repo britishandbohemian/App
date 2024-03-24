@@ -5,6 +5,9 @@ const ViewComponent = () => {
   const location = useLocation();
   const { item } = location.state; // Accessing the passed item
 
+
+
+  
   if (!item) {
     return <div>Item not found</div>;
   }

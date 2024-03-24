@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ViewsDataContext } from './App'; // Adjust the import path as necessary
 
 const EditComponent = () => {
@@ -15,9 +15,13 @@ const EditComponent = () => {
       name: e.target.name.value,
       whyImportant: e.target.whyImportant.value,
     };
-
+  
     updateViewsData(updatedItem);
-    navigate('/home'); // Redirect back to the home page or list view
+    navigate(`/view/${updatedItem.id}`, { state: { item: updatedItem } });
+  };
+
+  const handleBack = () => {
+    navigate(`/view/${item.id}`, { state: { item } });
   };
 
   if (!item) {
@@ -29,7 +33,7 @@ const EditComponent = () => {
         <div style={{ marginBottom: '5rem' }}>
           <header>
             <nav>
-              <button style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }} onClick={() => {/* Logout logic */}}>
+              <button style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold',color:'black' }} onClick={handleBack}>
                 <span className="material-symbols-outlined">chevron_left</span> 
               </button>
               <h1 className="logo">Feed</h1>

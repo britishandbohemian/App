@@ -10,9 +10,9 @@ const Home = ({ viewsData }) => {
       <section className="navTop" style={{ marginBottom: '5rem' }}>
         <header>
           <nav>
-            <button style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }} onClick={() => {/* Logout logic */}}>
+            <Link style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold', color:"black" }} to={"/signin"}>
               <span className="material-symbols-outlined">chevron_left</span> <h5>Logout</h5>
-            </button>
+            </Link>
             <h1 className="logo">Feed</h1>
           </nav>
         </header>
@@ -47,6 +47,25 @@ const Home = ({ viewsData }) => {
           ))}
         </div>
       </section>
+         {/* Floating Action Button for Adding a New Note */}
+         <Link to="/create" style={{
+        position: 'fixed',
+        right: '20px',
+        bottom: '20px',
+        backgroundColor: '#007bff', // Example blue color
+        color: 'white',
+        padding: '15px',
+        borderRadius: '50%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textDecoration: 'none',
+        fontSize: '24px',
+        boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+        zIndex: '1000', // Ensure it floats above other content
+      }}>
+        <span className="material-symbols-outlined">add</span>
+      </Link>
     </div>
   );
 };
