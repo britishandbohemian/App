@@ -32,7 +32,7 @@ const App = () => {
   
 
   return (
-    <Router>
+    <Router basename="/Feed_App">
     <ViewsDataContext.Provider value={{ viewsData, updateViewsData }}>
       <Routes>
         {/* Set SignIn as the index route */}
