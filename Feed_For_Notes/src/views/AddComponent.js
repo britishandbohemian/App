@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ViewsDataContext } from './App';
+import { ViewsDataContext } from '../App';
 
 const AddComponent = () => {
   const { viewsData, updateViewsData } = useContext(ViewsDataContext);

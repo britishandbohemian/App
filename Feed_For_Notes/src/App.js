@@ -1,10 +1,10 @@
 import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './home'; // Adjust the path if necessary
-import SignIn from './signin'; // Adjust the path if necessary
-import ViewComponent from './viewComponent'; // Adjust the path if necessary
-import EditComponent from './EditComponent'; // Adjust the path if necessary
-import AddComponent from './AddComponent'; // Adjust the path if necessary
+import Home from './views/Home'; // Adjust the path if necessary
+import SignIn from './views/SignIn'; // Adjust the path if necessary
+import ViewComponent from './views/ViewComponent'; // Adjust the path if necessary
+import EditComponent from './views/EditComponent'; // Adjust the path if necessary
+import AddComponent from './views/AddComponent'; // Adjust the path if necessary
 
 export const ViewsDataContext = createContext(null);
 
@@ -41,7 +41,6 @@ const App = () => {
         <Route path="view/:id" element={<ViewComponent />} />
         <Route path="edit/:id" element={<EditComponent />} />
         <Route path="create" element={<AddComponent />} />
-
         {/* Optionally, redirect from /signin to / */}
         <Route path="signin" element={<Navigate replace to="/" />} />
       </Routes>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { ViewsDataContext } from './App'; // Adjust the import path as necessary
+import { useNavigate, useParams } from 'react-router-dom';
+import { ViewsDataContext } from '../App';
 
 const EditComponent = () => {
   const { viewsData, updateViewsData } = useContext(ViewsDataContext);
@@ -15,7 +15,7 @@ const EditComponent = () => {
       name: e.target.name.value,
       whyImportant: e.target.whyImportant.value,
     };
-  
+
     updateViewsData(updatedItem);
     navigate(`/view/${updatedItem.id}`, { state: { item: updatedItem } });
   };
@@ -25,16 +25,17 @@ const EditComponent = () => {
   };
 
   if (!item) {
-    return <div>Item not found</div>;
+    return <div style={{ margin: "auto" }}>Item not found</div>;
   }
   return (
     <div id="content" >
-   <section className="navTop">
+      {/* Navbar */}
+      <section className="navTop">
         <div style={{ marginBottom: '5rem' }}>
           <header>
             <nav>
-              <button style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold',color:'black' }} onClick={handleBack}>
-                <span className="material-symbols-outlined">chevron_left</span> 
+              <button style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold', color: 'black' }} onClick={handleBack}>
+                <span className="material-symbols-outlined">chevron_left</span>
               </button>
               <h1 className="logo">Feed</h1>
             </nav>
@@ -43,6 +44,8 @@ const EditComponent = () => {
       </section>
 
       <section style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'center' }}>
+
+{/* Form To Edit The component at hand */}
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'center', width: '50%' }}>
           <div style={{ margin: '10px', width: '100%' }}>
             <label htmlFor="name" style={{ display: 'block', margin: '10px 0', fontWeight: '400', fontSize: '15px' }}>Name:</label>
@@ -55,10 +58,13 @@ const EditComponent = () => {
             <hr style={{ border: '1px solid black', marginTop: '7px' }} />
           </div>
 
+{/* Submit button to post the edit */}
           <button type="submit" style={{ height: '50px', width: '50px', backgroundColor: 'black', borderRadius: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
             <span className="material-symbols-outlined" style={{ color: 'white', fontSize: '24px' }}>check</span>
           </button>
         </form>
+
+
       </section>
     </div>
   );

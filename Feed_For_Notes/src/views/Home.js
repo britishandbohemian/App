@@ -21,10 +21,12 @@ const Home = ({ viewsData }) => {
       <section style={{ padding: '1rem',margin:' 3rem auto' }}>
         <div style={{ margin:'3rem auto',padding: '2rem', backgroundColor: 'rgb(0, 0, 0)', marginBottom: '0' }}>
           <h1 style={{ fontSize: '5vh', fontWeight: 'bolder', color: 'white' }}>Welcome, {username}</h1>
-        </div>
-        <hr style={{ padding: '0', margin: '0', height: '2.5rem', width: '100%' }} className="gradient" />
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'left', gap: '20px' ,flexDirection: 'column',margin:'3rem auto'}}>
+          <hr style={{ padding: '0', margin: '0', height: '2.5rem', width: '100%' }} className="gradient" />
+        </div>
+
+
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' ,flexDirection: 'column',margin:'3rem auto'}}>
           {viewsData.map((view, index) => (
             <Link
               to={`/view/${view.id}`}
@@ -43,6 +45,7 @@ const Home = ({ viewsData }) => {
                 <h1 style={{ color: 'white', fontSize: '2rem', fontWeight: 'bold' }}>{view.name}</h1>
                 <h2 style={{ color: 'white', fontSize: '1rem', fontWeight: '100' }}>{view.whyImportant}</h2>
               </div>
+              <hr style={{ padding: '0', margin: '0', height: '2.5rem', width: '100%' }} className="gradient" />
             </Link>
           ))}
         </div>
@@ -52,7 +55,7 @@ const Home = ({ viewsData }) => {
         position: 'fixed',
         right: '20px',
         bottom: '20px',
-        backgroundColor: '#007bff', // Example blue color
+        backgroundColor: 'black', // Example blue color
         color: 'white',
         padding: '15px',
         borderRadius: '50%',
