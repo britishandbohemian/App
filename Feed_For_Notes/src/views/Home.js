@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Home = ({ viewsData }) => {
   const location = useLocation();
-  const username = location.state ? location.state.username : "User"; // Fallback to "User" if no username is provided
+  const username = location.state;
 
   return (
     <div id="content">
@@ -42,9 +42,11 @@ const Home = ({ viewsData }) => {
                 flexDirection: 'column',
                 alignItems: index % 2 === 0 ? 'flex-start' : 'flex-end',
               }}>
+                {/* Now Let us add a button to delete a component so when the this x is click the popup can appear askign the user if they are sure they want to delete the component if yes then delete, place the button here on the top left of this component */}
                 <h1 style={{ color: 'white', fontSize: '2rem', fontWeight: 'bold' }}>{view.name}</h1>
                 <h2 style={{ color: 'white', fontSize: '1rem', fontWeight: '100' }}>{view.whyImportant}</h2>
               </div>
+              {/* futher more i want this hr to take up the bottom of this card come up with a clever css trick or struture change to do this */}
               <hr style={{ padding: '0', margin: '0', height: '2.5rem', width: '100%' }} className="gradient" />
             </Link>
           ))}
