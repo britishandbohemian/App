@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Milonga&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.btnenter {
+  margin: auto;
+}
+
+
+
+.material-icons {
+  color: white;
+}
+
+button {
+  border: none;
+  background-color: white;
+}
+
+
+body {
+  background-color: #F4F4F4;
+}
+
+*{
+  font-family: 'Montserrat';
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+
+.navHome {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.logo {
+  margin-right: 1rem;
+  font-family: 'Milonga';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 45px;
+  color: black;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+header {
+z-index: 1000;
+  background: #FFFFFF;
+  border: 1px solid #C9C9C9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+h1 {
+  font-size: 32px; /* Most important, largest */
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 16px; /* Least important, smallest */
+}
+
+input {
+  font-size: 14px; /* Specific size for input fields */
+}
+
+
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient {
+  background-size: 200% 200%;
+  background-color: #FFE53B;
+  background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+  animation: gradientAnimation 3s ease infinite;
+}
+
+
+
+label {
+  margin: 10px 0px;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.signin {
+  display: grid;
+  grid-template-rows: 49% 49%;
+}
+
+/* Container for all cards */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Ensures space between cards */
+  padding: 1rem 0; /* Padding at top and bottom */
+}
+
+
+@media (min-width: 768px) {
+  .card-container:nth-child(odd) {
+    justify-content: flex-start; /* Aligns odd cards to the left */
+  }
+
+  .card-container:nth-child(even) {
+    justify-content: flex-end; /* Aligns even cards to the right */
+  }
+
+  .card {
+    width: calc(50% - 10px); /* Adjusts card width for desktop, accounting for gap */
+    /* Further styling adjustments for desktop if necessary */
+  }
+}
+/* Base styles for all screens */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between cards */
+  padding: 1rem; /* Padding around the container */
+}
+
+.card-container {
+  display: flex;
+  width: 100%; /* Full width on mobile */
+}
+
+.card {
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  width: 100%; /* Full width cards on mobile */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Adds shadow for depth */
+  text-align: left; /* Text alignment */
+  border-radius: 4px; /* Optional: Rounds corners */
+}
+
+/* Adjust alignment for even cards */
+.card-container:nth-child(even) {
+  justify-content: flex-end;
+}
+
+/* Style for the card itself */
+.card {
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  width: calc(70% - 10px); /* Adjust width as needed, accounting for gap */
+  text-align: left; /* Default text alignment */
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 1rem 10%; /* Side padding on larger screens */
+  }
+
+}
+
+
+@media (min-width: 768px) {
+  /* Your CSS rules for desktop and tablet screens go here */
+}
+
+
+
+textarea{
+  font-size: 15px;
+}
+
+
+
+#imgtop {
+
+  background-color: black;
+
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+
+#inputs {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem 20%;
+  text-align: center;
+  gap: 1rem;
+}
+
+input {
+  border: none;
+  height: 30px;
+  border-bottom: 5px solid #FF2525;
+  background-color: black;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.btns {
+
+  background-color: black;
+  border: 5px solid black;
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signinfrm,
+label {
+  font-weight: bold;
+
+}
+
+.content{
+  display: flex;
+}
