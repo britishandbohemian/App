@@ -1,59 +1,83 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const Home = ({ viewsData }) => {
+const Home = ({ viewsData, deleteCard }) => {
   const location = useLocation();
-  const username = location.state;
+  // Assuming `username` is a key in the object provided to `state`
+  const { username } = location.state || {}; // Add a default empty object to avoid destructuring `null` or `undefined`
 
+  // Function to call deleteCard with the card's id
+  const handleDelete = (id) => {
+    deleteCard(id);
+  };
   return (
     <div id="content">
       <section className="navTop" style={{ marginBottom: '5rem' }}>
         <header>
           <nav>
-            <Link style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold', color:"black" }} to={"/signin"}>
-              <span className="material-symbols-outlined">chevron_left</span> <h5>Logout</h5>
+            <Link style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold', color: "black" }} to={"/signin"}>
+              <span className="material-symbols-outlined">chevron_left</span> <h5 style={{ fontWeight: 'bold' }}>Logout</h5>
             </Link>
             <h1 className="logo">Feed</h1>
           </nav>
         </header>
       </section>
 
-      <section style={{ padding: '1rem',margin:' 3rem auto' }}>
-        <div style={{ margin:'3rem auto',padding: '2rem', backgroundColor: 'rgb(0, 0, 0)', marginBottom: '0' }}>
-          <h1 style={{ fontSize: '5vh', fontWeight: 'bolder', color: 'white' }}>Welcome, {username}</h1>
+      <section style={{ padding: '1rem', margin: ' auto 0rem' }}>
+        <div style={{ margin: '3rem auto', padding: '0rem', backgroundColor: 'rgb(0, 0, 0)', marginBottom: '0' }}>
+
+          <div style={{ padding: '2rem' }}>
+            <h1 style={{ fontSize: '5vh', fontWeight: 'bold', color: 'white' }}>Welcome</h1>
+
+            <h5 style={{ fontSize: '15px', color: 'white' }}>{username}</h5>
+          </div>
 
           <hr style={{ padding: '0', margin: '0', height: '2.5rem', width: '100%' }} className="gradient" />
         </div>
 
-
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' ,flexDirection: 'column',margin:'3rem auto'}}>
+        <div className="container">
           {viewsData.map((view, index) => (
-            <Link
-              to={`/view/${view.id}`}
-              state={{ item: view }}
-              key={view.id}
-              style={{ color: 'black', textDecoration: 'none', width: 'calc(50% - 20px)' }}
-            >
-              <div style={{
-                backgroundColor: 'black',
-                padding: '20px',
-                margin: index % 2 === 0 ? '0 auto 0 0' : '0 0 0 auto', // Alternating alignment
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: index % 2 === 0 ? 'flex-start' : 'flex-end',
-              }}>
-                {/* Now Let us add a button to delete a component so when the this x is click the popup can appear askign the user if they are sure they want to delete the component if yes then delete, place the button here on the top left of this component */}
-                <h1 style={{ color: 'white', fontSize: '2rem', fontWeight: 'bold' }}>{view.name}</h1>
-                <h2 style={{ color: 'white', fontSize: '1rem', fontWeight: '100' }}>{view.whyImportant}</h2>
-              </div>
-              {/* futher more i want this hr to take up the bottom of this card come up with a clever css trick or struture change to do this */}
-              <hr style={{ padding: '0', margin: '0', height: '2.5rem', width: '100%' }} className="gradient" />
-            </Link>
+            <div key={view.id} className={`card-container`}>
+
+
+              <Link
+                to={`/view/${view.id}`}
+                state={{ item: view }}
+                className="card"
+                style={{ textDecoration: 'none' }}
+              >
+                <h1 style={{ fontWeight: 'bold', fontSize: '1.25rem' }}>{view.name}</h1>
+                <h4 style={{ fontWeight: '100', fontSize: '1rem' }}>{view.whyImportant}</h4>
+                <h5>Priority</h5>
+                <hr style={{ margin: '1rem 0 0 0', height: '10px', border: 'none', backgroundColor: 'red' }} />
+              </Link>
+
+              <span
+                className="material-symbols-outlined"
+                style={{
+                  position: 'relative',
+                  top: '3px',
+                  left: '10px',
+                  cursor: 'pointer',
+                  color: 'black', // Adjust color as needed
+                }}
+                onClick={() => handleDelete(view.id)}
+              >
+                close
+              </span>
+            </div>
           ))}
         </div>
+
+
+
+
+
+
+
       </section>
-         {/* Floating Action Button for Adding a New Note */}
-         <Link to="/create" style={{
+      {/* Floating Action Button for Adding a New Note */}
+      <Link to="/create" style={{
         position: 'fixed',
         right: '20px',
         bottom: '20px',

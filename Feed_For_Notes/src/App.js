@@ -29,12 +29,18 @@ const App = () => {
       setViewsData([...viewsData, updatedItem]);
     }
   };
+
+  const deleteCard = (id) => {
+    const filteredViewsData = viewsData.filter(item => item.id !== id);
+    setViewsData(filteredViewsData);
+  };
   
 
   return (
     <Router basename="/Feed_App">
     <ViewsDataContext.Provider value={{ viewsData, updateViewsData }}>
       <Routes>
+      <Route path="home" element={<Home viewsData={viewsData} deleteCard={deleteCard} />} />
         {/* Set SignIn as the index route */}
         <Route index element={<SignIn />} />
         <Route path="home" element={<Home viewsData={viewsData} />} />

@@ -4,19 +4,30 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of
 // Define Popup component here
 function Popup({ message, onClose }) {
   return (
-    <div style={{
-      position: 'fixed',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      backgroundColor: 'white',
-      padding: '20px',
-      zIndex: 100,
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    }}>
-      <p>{message}</p>
-      <button onClick={onClose}>Close</button>
-    </div>
+<div style={{
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  backgroundColor: 'white',
+  padding: '20px',
+  zIndex: 100,
+  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Slightly stronger shadow
+}}>
+  <p style={{ fontSize: '14px' }}>{message}</p> {/* Decreased font size */}
+  {/* Position "X" button at the center bottom */}
+  <button onClick={onClose} style={{
+    position: 'absolute',
+    bottom: '10px', // Adjust distance from bottom
+    left: '50%',
+    transform: 'translateX(-50%)',
+    fontSize: '14px', // Match the font size decrease
+    cursor: 'pointer',
+  }}>
+    X {/* Changed button label to "X" */}
+  </button>
+</div>
+
   );
 }
 

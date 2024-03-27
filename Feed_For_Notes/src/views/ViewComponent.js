@@ -14,17 +14,17 @@ const ViewComponent = () => {
       <section className="navTop">
         <header>
           <nav>
-            <Link to="/home">
-              <button><span className="material-symbols-outlined">chevron_left</span></button>
+          <Link style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold', color: "black" }} to={"/home"}>
+              <span className="material-symbols-outlined">chevron_left</span> <h5 style={{fontWeight:'bold'}}>Home</h5>
             </Link>
             <h1 className="logo">Feed</h1>
           </nav>
         </header>
       </section>
 
-      <section style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ height: '40vh', width: '100%', backgroundImage: "url('/bg.jpg')", backgroundSize: 'cover', padding: '0rem' }}></div>
-        <div style={{ backgroundColor: 'white', width: '100%', position: 'relative' }}>
+      <section style={{ display: 'grid', flexDirection: 'column', alignItems: 'center' ,height:'100vh',}}>
+        <div style={{ height: '60vh', width: '100%', backgroundImage: "url('/bg.jpg')", backgroundSize: 'cover', padding: '0rem' }}></div>
+        <div style={{ backgroundColor: 'white', width: '100%', position: 'relative',border:'#6c6c6c3b 1px solid' }}>
           <Link to={`/edit/${item.id}`} state={{ item }} style={{
             borderRadius: '100%',
             width: '50px',
