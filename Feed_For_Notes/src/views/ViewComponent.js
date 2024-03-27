@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
 const ViewComponent = () => {
   const location = useLocation();
   const { item } = location.state; // Accessing the passed item
+  const [imagePath, setImagePath] = useState('');
+
+  // Define your images paths
+  const images = [
+    '/image1.jpg',
+    '/image2.jpg',
+    '/image3.jpg',
+  ];
+
+  useEffect(() => {
+    // Select an image from the list each time the component mounts
+    const randomIndex = Math.floor(Math.random() * images.length);
+    // Construct the path relative to the public folder
+    setImagePath(process.env.PUBLIC_URL + images[randomIndex]);
+  }, [item?.id]); // Re-run the effect when the item id changes
 
   if (!item) {
     return <div>Item not found</div>;
@@ -22,8 +37,16 @@ const ViewComponent = () => {
         </header>
       </section>
 
-      <section style={{ display: 'grid', flexDirection: 'column', alignItems: 'center' ,height:'100vh',}}>
-        <div style={{ height: '60vh', width: '100%', backgroundImage: "url('/bg.jpg')", backgroundSize: 'cover', padding: '0rem' }}></div>
+      <section style={{ display: 'grid',gridTemplateRows:'60% auto', flexDirection: 'column', alignItems: 'center' ,height:'100vh',}}>
+      <img 
+          src={imagePath} 
+          alt="Dynamic"
+          style={{ 
+            height: '60vh', // Or '100vh' if you want it to cover the full viewport height
+            width: '100%',
+            objectFit: 'cover' // This will cover the area without stretching the image
+          }} 
+        />
         <div style={{ backgroundColor: 'white', width: '100%', position: 'relative',border:'#6c6c6c3b 1px solid' }}>
           <Link to={`/edit/${item.id}`} state={{ item }} style={{
             borderRadius: '100%',
