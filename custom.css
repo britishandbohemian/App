@@ -108,10 +108,10 @@ input {
 }
 
 .gradient {
-  background-size: 200% 200%;
-  background-color: #FFE53B;
-  background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
-  animation: gradientAnimation 3s ease infinite;
+  background-color: #ffffff;
+  opacity: 0.8;
+  background-size: 10px 10px;
+  background-image: repeating-linear-gradient(45deg, #000000 0, #000000 1px, #ffffff 0, #ffffff 50%);
 }   
 
 
@@ -125,6 +125,7 @@ label {
 .signin {
   display:flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 /* Container for all cards */
@@ -211,8 +212,6 @@ textarea{
 }
 
 #imgtop {
-
-  background-color: black;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -236,6 +235,14 @@ textarea{
   padding: 2rem 20%;
   text-align: center;
   gap: 1rem;
+}
+
+.bg-home{
+  background-color: #e5e5f7;
+opacity: 0.8;
+background-image:  linear-gradient(30deg, #1c1c1c 12%, transparent 12.5%, transparent 87%, #1c1c1c 87.5%, #1c1c1c), linear-gradient(150deg, #1c1c1c 12%, transparent 12.5%, transparent 87%, #1c1c1c 87.5%, #1c1c1c), linear-gradient(30deg, #1c1c1c 12%, transparent 12.5%, transparent 87%, #1c1c1c 87.5%, #1c1c1c), linear-gradient(150deg, #1c1c1c 12%, transparent 12.5%, transparent 87%, #1c1c1c 87.5%, #1c1c1c), linear-gradient(60deg, #1c1c1c77 25%, transparent 25.5%, transparent 75%, #1c1c1c77 75%, #1c1c1c77), linear-gradient(60deg, #1c1c1c77 25%, transparent 25.5%, transparent 75%, #1c1c1c77 75%, #1c1c1c77);
+background-size: 20px 35px;
+background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
 }
 
 option{
