@@ -65,7 +65,7 @@ const ViewComponent = () => {
             <span className="material-symbols-outlined" style={{ color: 'black', fontSize: '24px' }}>edit</span>
           </Link>
           <div className="text" style={{ padding: '1rem' }}>
-            <h1>{item.name}</h1>
+            <h1 style={{fontWeight:'bold'}}>{item.name}</h1>
             <h2 style={{ fontWeight: '100', fontSize: '16px' }}>{item.whyImportant}</h2>
           </div>
           <div style={{ backgroundColor: 'red', padding: '9px', margin: '0' }}></div>

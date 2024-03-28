@@ -53,17 +53,16 @@ function SignIn() {
     navigate('/home', { state: { username: username } });
   };
   return (
-    <section className="signin ">
-      <div id="imgtop" className="gradient">
-        <h1 className="logo" style={{ color: "white", marginBottom: '10px' }}>Feed</h1>
-        <h3 style={{ color: "white", fontSize: "20px" }}>Welcome to Feed</h3>
+    <section className="signin bg-home ">
+      <div id="imgtop" className="">
+        <h1 className="logo" style={{ color: "white", marginBottom: '10px', background:'black', padding:'2rem' }}>Feed</h1>
       </div>
 
       <div className='inputsDiv'>
         <form className="signinfrm" onSubmit={handleSubmit}>
           <div id="inputs">
             <div className='inputlabel'>
-              <label htmlFor="username">Username</label>
+              <label style={{color:'white',background:'black',padding:'10px'}} htmlFor="username">Username</label>
               <input
                 id="username"
                 name="username"
@@ -73,7 +72,7 @@ function SignIn() {
               />
             </div>
             <div className='inputlabel'>
-              <label htmlFor="password">Password</label>
+              <label  style={{color:'white',background:'black',padding:'10px'}} htmlFor="password">Password</label>
               <input
                 id="password"
                 name="password"

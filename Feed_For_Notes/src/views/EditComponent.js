@@ -70,7 +70,8 @@ const EditComponent = () => {
 
           <div>
           <label htmlFor="priority">Priority:</label>
-          <select id="priority" name="priority" defaultValue={item.priority || 'Medium'}>
+          <select id="priority" name="priority" defaultValue={item.priority || 'Medium'}      style={{ backgroundColor: 'black', color: 'white', border: 'none', height: '28px', width: '100%',fontSize:'15px' }}
+  >
             <option value="High">High</option>
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>

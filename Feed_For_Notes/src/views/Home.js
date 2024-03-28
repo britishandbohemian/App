@@ -53,31 +53,48 @@ const Home = () => {
 
         <div className="container">
           {viewsData.map((view, index) => (
-            <div key={view.id} className={`card-container`}>
 
+            <div>
+<div key={view.id} className="card-container" style={{ 
+  display: 'flex', 
+  flexDirection: 'column', 
+  justifyContent: 'space-between', 
+  height: '100%', 
+  marginBottom: '20px', // Adjust as needed for spacing between cards
+  backgroundColor: '#fff', // Background color for visibility
+  boxShadow: '0px 0px 10px rgba(0,0,0,0.1)', // Optional shadow for aesthetics
+  padding: '20px', // Inner padding
+  borderRadius: '8px' // Rounded corners
+}}>
+  <Link to={`/view/${view.id}`} state={{ item: view }} className="card" style={{ 
+    textDecoration: 'none', 
+    marginBottom: '10px' // Space between the content and the hr
+  }}>
+    <h1 style={{ fontWeight: 'bold' }}>{view.name}</h1>
+    <h4 style={{ fontWeight: '100' }}>{view.whyImportant}</h4>
+    <h5>Priority</h5>
+  </Link>
+  <span className="material-symbols-outlined" style={{ 
+    cursor: 'pointer', 
+    color: 'black', 
+    alignSelf: 'flex-end', // Align close icon to the right
+    marginBottom: '10px' // Space between the icon and the hr
+  }} onClick={() => handleDelete(view.id)}>
+    thumb_up
+  </span>
+  <hr style={{ 
+    margin: '0', // Remove any default margin
+    height: '2px', // Height of the hr line
+    backgroundColor: 'red', // Color of the hr line
+    border: 'none', // Remove any default border
+    alignSelf: 'stretch' // Ensure it takes the full width
+  }} />
+</div>
 
-              <Link
-                to={`/view/${view.id}`}
-                state={{ item: view }}
-                className="card"
-                style={{ textDecoration: 'none' }}
-              >
-                <h1 style={{ fontWeight: 'bold', fontSize: '1.25rem' }}>{view.name}</h1>
-                <h4 style={{ fontWeight: '100', fontSize: '1rem' }}>{view.whyImportant}</h4>
-                <h5>Priority</h5>
-                <hr style={{ margin: '1rem 0 0 0', height: '10px', border: 'none', backgroundColor: 'red' }} />
-              </Link>
-              <span
-                className="material-symbols-outlined"
-                style={{
-                  cursor: 'pointer',
-                  color: 'black',
-                }}
-                onClick={() => handleDelete(view.id)}
-              >
-                close
-              </span>
             </div>
+
+
+            
           ))}
         </div>
 
