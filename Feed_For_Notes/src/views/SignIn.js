@@ -4,29 +4,30 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of
 // Define Popup component here
 function Popup({ message, onClose }) {
   return (
-<div style={{
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  backgroundColor: 'white',
-  padding: '20px',
-  zIndex: 100,
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Slightly stronger shadow
-}}>
-  <p style={{ fontSize: '14px' }}>{message}</p> {/* Decreased font size */}
-  {/* Position "X" button at the center bottom */}
-  <button onClick={onClose} style={{
-    position: 'absolute',
-    bottom: '10px', // Adjust distance from bottom
-    left: '50%',
-    transform: 'translateX(-50%)',
-    fontSize: '14px', // Match the font size decrease
-    cursor: 'pointer',
-  }}>
-    X {/* Changed button label to "X" */}
-  </button>
-</div>
+    <div style={{
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      backgroundColor: 'white',
+      padding: '20px',
+      zIndex: 100,
+      border: '1px solid black',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Slightly stronger shadow
+    }}>
+      <p style={{ fontSize: '14px', marginBottom: '1rem' }}>{message}</p> {/* Decreased font size */}
+      {/* Position "X" button at the center bottom */}
+      <button onClick={onClose} style={{
+        position: 'absolute',
+        bottom: '10px', // Adjust distance from bottom
+        left: '50%',
+        transform: 'translateX(-50%)',
+        fontSize: '14px', // Match the font size decrease
+        cursor: 'pointer',
+      }}>
+        X {/* Changed button label to "X" */}
+      </button>
+    </div>
 
   );
 }
@@ -40,7 +41,7 @@ function SignIn() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     if (!username.trim()) {
       // If the username is empty, show the popup with an error message
       setErrorMessage("Username is required!");
@@ -52,35 +53,43 @@ function SignIn() {
     navigate('/home', { state: { username: username } });
   };
   return (
-    <section className="signin">
+    <section className="signin ">
       <div id="imgtop" className="gradient">
-        <h1 className="logo" style={{color:"white"}}>Feed</h1>
+        <h1 className="logo" style={{ color: "white", marginBottom: '10px' }}>Feed</h1>
+        <h3 style={{ color: "white", fontSize: "20px" }}>Welcome to Feed</h3>
       </div>
-      <form className="signinfrm" onSubmit={handleSubmit}>
-        <div id="inputs">
-          <label htmlFor="username">Name</label>
-          <input
-            id="username"
-            name="username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <div className='btnenter'>
-            <button type="submit" className="btns">
-              <span className="material-icons">arrow_forward</span>
-            </button>
+
+      <div className='inputsDiv'>
+        <form className="signinfrm" onSubmit={handleSubmit}>
+          <div id="inputs">
+            <div className='inputlabel'>
+              <label htmlFor="username">Username</label>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div className='inputlabel'>
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className='btnenter'>
+              <button type="submit" className="btns">
+                <span className="material-icons">arrow_forward</span>
+              </button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
 
       {showPopup && <Popup message={errorMessage} onClose={() => setShowPopup(false)} />}
     </section>

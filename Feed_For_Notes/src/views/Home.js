@@ -1,23 +1,39 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { ViewsDataContext } from '../App';
 
-const Home = ({ viewsData, deleteCard }) => {
+const Home = () => {
+  const { viewsData, deleteCard } = useContext(ViewsDataContext);
+  const navigate = useNavigate();
   const location = useLocation();
-  // Assuming `username` is a key in the object provided to `state`
-  const { username } = location.state || {}; // Add a default empty object to avoid destructuring `null` or `undefined`
+  const { username } = location.state || {};
 
-  // Function to call deleteCard with the card's id
-  const handleDelete = (id) => {
-    deleteCard(id);
+  const handleLogout = () => {
+    navigate('/signin');
   };
+
+  // Adjusted to use the deleteCard function from context
+  const handleDelete = async (id) => {
+    try {
+      await deleteCard(id);
+      console.log(`Component with ID ${id} deleted successfully.`);
+    } catch (error) {
+      console.error("Error deleting component: ", error);
+    }
+  };
+
+
+
   return (
     <div id="content">
       <section className="navTop" style={{ marginBottom: '5rem' }}>
         <header>
           <nav>
-            <Link style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold', color: "black" }} to={"/signin"}>
-              <span className="material-symbols-outlined">chevron_left</span> <h5 style={{ fontWeight: 'bold' }}>Logout</h5>
-            </Link>
+<button>
+<span onClick={handleLogout} style={{ cursor: 'pointer',display:'flex',alignItems:'center' }}>
+  <span className="material-symbols-outlined">chevron_left</span> <h5 style={{ fontWeight: 'bold' }}>Logout</h5>
+</span>
+</button>
             <h1 className="logo">Feed</h1>
           </nav>
         </header>
@@ -51,15 +67,11 @@ const Home = ({ viewsData, deleteCard }) => {
                 <h5>Priority</h5>
                 <hr style={{ margin: '1rem 0 0 0', height: '10px', border: 'none', backgroundColor: 'red' }} />
               </Link>
-
               <span
                 className="material-symbols-outlined"
                 style={{
-                  position: 'relative',
-                  top: '3px',
-                  left: '10px',
                   cursor: 'pointer',
-                  color: 'black', // Adjust color as needed
+                  color: 'black',
                 }}
                 onClick={() => handleDelete(view.id)}
               >

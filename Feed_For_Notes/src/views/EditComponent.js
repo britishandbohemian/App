@@ -1,25 +1,35 @@
 import React, { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ViewsDataContext } from '../App';
+import { getDatabase, ref, update } from 'firebase/database';
 
 const EditComponent = () => {
-  const { viewsData, updateViewsData } = useContext(ViewsDataContext);
   const navigate = useNavigate();
   const { id } = useParams();
-  const item = viewsData.find(item => item.id === parseInt(id));
+  const { viewsData, fetchData } = useContext(ViewsDataContext); // Use fetchData to refresh the list
+  const item = viewsData.find(item => item.id === id);
+
+  if (!item) {
+    return <div style={{ margin: "auto" }}>Item not found</div>;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const updatedItem = {
-      id: item.id,
       name: e.target.name.value,
       whyImportant: e.target.whyImportant.value,
+      priority: e.target.priority.value,
     };
 
-    updateViewsData(updatedItem);
-    navigate(`/view/${updatedItem.id}`, { state: { item: updatedItem } });
+    const itemRef = ref(getDatabase(), `components/${id}`);
+    update(itemRef, updatedItem).then(() => {
+      console.log("Item updated successfully!");
+      fetchData(); // Call fetchData to refresh the data after update
+      navigate(`/view/${id}`, { state: { item: { id, ...updatedItem } } });
+    }).catch((error) => {
+      console.error("Error updating item: ", error);
+    });
   };
-
   const handleBack = () => {
     navigate(`/view/${item.id}`, { state: { item } });
   };
@@ -58,7 +68,14 @@ const EditComponent = () => {
             <hr style={{ border: '1px solid black', marginTop: '7px' }} />
           </div>
 
-{/* Submit button to post the edit */}
+          <div>
+          <label htmlFor="priority">Priority:</label>
+          <select id="priority" name="priority" defaultValue={item.priority || 'Medium'}>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
           <button type="submit" style={{ height: '50px', width: '50px', backgroundColor: 'black', borderRadius: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
             <span className="material-symbols-outlined" style={{ color: 'white', fontSize: '24px' }}>check</span>
           </button>

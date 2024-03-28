@@ -112,7 +112,7 @@ input {
   background-color: #FFE53B;
   background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
   animation: gradientAnimation 3s ease infinite;
-}
+}   
 
 
 
@@ -123,8 +123,8 @@ label {
 }
 
 .signin {
-  display: grid;
-  grid-template-rows: 49% 49%;
+  display:flex;
+  flex-direction: column;
 }
 
 /* Container for all cards */
@@ -206,15 +206,27 @@ textarea{
 }
 
 
+.inputsDiv{
+  border-radius: 10rem 10rem;
+}
 
 #imgtop {
 
   background-color: black;
-
   justify-content: center;
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1rem;
   align-items: center;
 }
+
+.inputlabel{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 
 
 #inputs {
@@ -226,12 +238,22 @@ textarea{
   gap: 1rem;
 }
 
+option{
+  font-size: 15px;
+}
+
+select{
+  font-size: 15px;
+}
+
+
 input {
   border: none;
   height: 30px;
   border-bottom: 5px solid #FF2525;
   background-color: black;
   color: white;
+  width: 100%;
 }
 
 a {
